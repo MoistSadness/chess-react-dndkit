@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { DndContext, useDroppable, useDraggable } from '@dnd-kit/core';
+//import { DndContext, useDroppable, useDraggable } from '@dnd-kit/core';
 
 import Chessboard from './Chessboard'
 import ChessboardModel from '../../models/ChessboardModel'
@@ -19,11 +19,12 @@ export default function Chess() {
     return (
         <div>
             <Chessboard board={board} setBoard={setBoard} />
-            <DND />
         </div>
     )
 }
 
+/** Sample DND Code
+ * 
 export function DND() {
     const containers = ['A', 'B', 'C'];
   const [parent, setParent] = useState(null);
@@ -55,33 +56,34 @@ export function DND() {
 }
 
 export function Draggable(props: any) {
-    const { attributes, listeners, setNodeRef, transform } = useDraggable({
-        id: 'draggable',
-    })
-
+    const {attributes, listeners, setNodeRef, transform} = useDraggable({
+      id: props.id,
+    });
     const style = transform ? {
-        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-    } : undefined
-
+      transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+    } : undefined;
+  
+    
     return (
-        <button ref={setNodeRef} style={style} {...listeners} {...attributes}>
-            {props.children}
-        </button>
-    )
-}
+      <button ref={setNodeRef} style={style} {...listeners} {...attributes}>
+        {props.children}
+      </button>
+    );
+  }
 
 export function Droppable(props: any) {
-    const { isOver, setNodeRef } = useDroppable({
-        id: 'droppable',
-    })
-
+    const {isOver, setNodeRef} = useDroppable({
+      id: props.id,
+    });
     const style = {
-        color: isOver ? 'green' : 'yellow'
-    }
-
+      color: isOver ? 'green' : undefined,
+    };
+    
+    
     return (
-        <div ref={setNodeRef} style={style}>
-            {props.children}
-        </div>
-    )
-}
+      <div ref={setNodeRef} style={style}>
+        {props.children}
+      </div>
+    );
+  }
+   */
